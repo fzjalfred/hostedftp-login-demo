@@ -70,10 +70,6 @@ button {
 			<div class="err"><%= err %></div>
 			<% } %>
 		</form>
-		<div class="hint">
-			Demo user is seeded automatically on first run:<br /> <b>Username:</b>
-			hostedftp<br /> <b>Password:</b> money
-		</div>
 		<div class="ssl">This demo expects HTTPS (Tomcat SSL enabled).</div>
 	</div>
 </body>
