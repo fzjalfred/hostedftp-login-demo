@@ -27,8 +27,13 @@ body {
     }
     String username = (String) session.getAttribute("username");
     String fullName = (String) session.getAttribute("full_name");
+    String salt = (String) session.getAttribute("password_salt");
+    String hash = (String) session.getAttribute("password_hash");
+    Integer iterations = (Integer) session.getAttribute("iterations");
+    String alg = (String) session.getAttribute("alg");
+    Integer login_count = (Integer) session.getAttribute("login_count");
+    java.sql.Timestamp last_login_at = (java.sql.Timestamp) session.getAttribute("last_login_at");
 %>
-	<div class="card">
 		<h2>
 			Welcome,
 			<%= (fullName != null && !fullName.isEmpty()) ? fullName : username %>!
@@ -41,6 +46,24 @@ body {
 		<p>
 			<b>Full name:</b>
 			<%= (fullName != null) ? fullName : "(none set)" %></p>
+		<p>
+			<b>Salt:</b>
+			<%= salt %></p>
+		<p>
+			<b>Hash:</b>
+			<%= hash %></p>
+		<p>
+			<b>Iterations:</b>
+			<%= iterations %></p>
+		<p>
+			<b>Algorithm:</b>
+			<%= alg %></p>
+		<p>
+			<b>Login count</b>
+			<%= login_count %></p>
+		<p>
+			<b>Last login at:</b>
+			<%= (last_login_at != null ? last_login_at : "(never)") %></p>
 		<p>
 			<a href="<%= request.getContextPath() %>/index.jsp">Logout</a> (just
 			go back to the login page for this demo)

@@ -39,6 +39,12 @@ public class LoginServlet extends HttpServlet {
             HttpSession session = req.getSession(true);
             session.setAttribute("username", u.username);
             session.setAttribute("full_name", u.fullName);
+            session.setAttribute("password_salt", u.salt);
+            session.setAttribute("password_hash", u.hash);
+            session.setAttribute("iterations", Integer.valueOf(u.iterations));
+            session.setAttribute("alg", u.alg);
+            session.setAttribute("login_count", u.login_count);
+            session.setAttribute("last_login_at", u.last_login_at);
             resp.sendRedirect(req.getContextPath() + "/welcome.jsp");
         } catch (SQLException e) {
             throw new ServletException(e);
