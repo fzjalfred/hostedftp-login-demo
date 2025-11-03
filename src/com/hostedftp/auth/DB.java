@@ -4,6 +4,8 @@ import java.sql.*;
 import java.util.Optional;
 import java.util.Properties;
 
+import javax.servlet.ServletException;
+
 public class DB {
     // Reads JDBC URL/credentials from config variables for portability:
     // Example DB_URL: jdbc:mysql://localhost:3306/demo?useSSL=false&allowPublicKeyRetrieval=true
@@ -15,9 +17,12 @@ public class DB {
     	// static check ensure that driver is loaded.
     	try {
     		Class.forName("com.mysql.cj.jdbc.Driver"); 
+    		ensureSchemaAndSeed();
     	} catch (ClassNotFoundException e) {
     	    throw new RuntimeException("MySQL JDBC driver not found in WEB-INF/lib", e);
-    	}
+    	} catch (SQLException e) {
+    		throw new RuntimeException("ensureSchemaAndSeed failed", e);
+        }
     }
 
     private static String getenvOr(String k, String defv) {

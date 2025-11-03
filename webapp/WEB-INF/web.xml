@@ -5,13 +5,6 @@
          http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
 	version="3.1">
 	<display-name>hostedftp-login-demo</display-name>
-
-	<!-- Init servlet runs at startup to ensure DB schema and seed demo user -->
-	<servlet>
-		<servlet-name>InitServlet</servlet-name>
-		<servlet-class>com.hostedftp.auth.InitServlet</servlet-class>
-		<load-on-startup>1</load-on-startup>
-	</servlet>
 	
 	<!-- Explicit mapping for JSPs -->
 	<welcome-file-list>
