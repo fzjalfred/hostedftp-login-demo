@@ -21,6 +21,7 @@ public class DB {
     	} catch (ClassNotFoundException e) {
     	    throw new RuntimeException("MySQL JDBC driver not found in WEB-INF/lib", e);
     	} catch (SQLException e) {
+    		e.printStackTrace();
     		throw new RuntimeException("ensureSchemaAndSeed failed", e);
         }
     }
