@@ -7,20 +7,16 @@ import java.util.Properties;
 public class DB {
     // Reads JDBC URL/credentials from config variables for portability:
     // Example DB_URL: jdbc:mysql://localhost:3306/demo?useSSL=false&allowPublicKeyRetrieval=true
-    private static String url() { return DbConfig.url(); }
-    private static String user() { return DbConfig.user(); }
-    private static String pass() { return DbConfig.pass(); }
+    private static String url() { return getenvOr("DB_URL", DbConfig.url()); }
+    private static String user() { return getenvOr("DB_USER", DbConfig.user()); }
+    private static String pass() { return getenvOr("DB_PASS", DbConfig.pass()); }
     
     static {
     	// static check ensure that driver is loaded.
-    	// Ensure table exists and seed default user.
     	try {
     		Class.forName("com.mysql.cj.jdbc.Driver"); 
-    		DB.ensureSchemaAndSeed();
     	} catch (ClassNotFoundException e) {
     	    throw new RuntimeException("MySQL JDBC driver not found in WEB-INF/lib", e);
-    	} catch (SQLException e) {
-    		throw new RuntimeException("ensureSchemaAndSeed failed", e);
     	}
     }
 

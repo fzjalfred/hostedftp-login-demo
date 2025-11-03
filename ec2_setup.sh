@@ -8,7 +8,7 @@ sudo mkdir -p /opt/tomcat
 sudo tar -xzf apache-tomcat-9.0.95.tar.gz -C /opt/tomcat --strip-components=1
 
 sudo chown -R root:root /opt/tomcat
-sudo chmod 775 /opt/tomcat/conf
+sudo chmod -R 775 /opt/tomcat
 
 sudo tee /etc/systemd/system/tomcat.service >/dev/null <<EOF
 [Unit]
@@ -34,3 +34,7 @@ EOF
 sudo systemctl daemon-reload
 sudo systemctl enable --now tomcat
 sudo systemctl status tomcat --no-pager
+
+
+# enable https on port 8443： /opt/tomcat/conf/server.xml 
+# mysql connection configuration: /opt/tomcat/webapps/hostedftp-login-demo/WEB-INF/classes/db.properties
