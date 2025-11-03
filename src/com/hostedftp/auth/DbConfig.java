@@ -4,8 +4,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
 
-import javax.servlet.ServletContext;
-
 public final class DbConfig {
 	private static final Properties P = new Properties();
 	static {

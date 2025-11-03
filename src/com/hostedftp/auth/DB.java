@@ -2,9 +2,6 @@ package com.hostedftp.auth;
 
 import java.sql.*;
 import java.util.Optional;
-import java.util.Properties;
-
-import javax.servlet.ServletException;
 
 public class DB {
     // Reads JDBC URL/credentials from config variables for portability:

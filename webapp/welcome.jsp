@@ -34,6 +34,7 @@ body {
     Integer login_count = (Integer) session.getAttribute("login_count");
     java.sql.Timestamp last_login_at = (java.sql.Timestamp) session.getAttribute("last_login_at");
 %>
+<div class="card">
 		<h2>
 			Welcome,
 			<%= (fullName != null && !fullName.isEmpty()) ? fullName : username %>!
